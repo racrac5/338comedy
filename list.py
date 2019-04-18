@@ -22,7 +22,7 @@ try:
 	grabAnimal = word_tokenize(data)
 	i = 0
 	for newitem in grabAnimal :
-		entry = newitem
+		entry = newitem.lower()
 		animaldict[i] = entry
 		i = i + 1
 	myfile.close()
@@ -32,7 +32,7 @@ try:
 	grabAnimal = word_tokenize(data)
 	i=0
 	for newitem in grabAnimal :
-		entry = newitem
+		entry = newitem.lower()
 		placedict[i] = entry
 		i = i + 1
 	myfile.close()
@@ -42,6 +42,7 @@ try:
 	grabAnimal = word_tokenize(data)
 	i=0
 	for newitem in grabAnimal :
+		newitem = newitem.lower()
 		entry = newitem
 		occupationdict[i] = entry
 		i = i + 1
@@ -51,7 +52,6 @@ try:
 	dictdict[1] = placedict
 	dictdict[2] = occupationdict
 
-	print(dictdict[2][3])
 
 
 

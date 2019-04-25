@@ -17,7 +17,7 @@ occupationdict = dict()
 dictdict = dict()
 
 try:
-	with open('listanimals.txt', 'r') as myfile:
+	with open('text_files/listanimals.txt', 'r') as myfile:
 		data = myfile.read()
 	grabAnimal = word_tokenize(data)
 	i = 0
@@ -27,7 +27,7 @@ try:
 		i = i + 1
 	myfile.close()
 
-	with open('places.txt', 'r') as myfile:
+	with open('text_files/places.txt', 'r') as myfile:
 		data = myfile.read()
 	grabAnimal = word_tokenize(data)
 	i=0
@@ -37,7 +37,7 @@ try:
 		i = i + 1
 	myfile.close()
 
-	with open('occupations.txt', 'r') as myfile:
+	with open('text_files/occupations.txt', 'r') as myfile:
 		data = myfile.read()
 	grabAnimal = word_tokenize(data)
 	i=0

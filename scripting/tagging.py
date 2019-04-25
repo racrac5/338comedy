@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 
 
-with open('elephanttext.txt', 'r+') as myfile:
+with open('text_files/elephanttext.txt', 'r+') as myfile:
 	lines = myfile.read()
 	sentences = nltk.sent_tokenize(lines)
 	nouns = []

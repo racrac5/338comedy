@@ -8,7 +8,8 @@ def main():
     corpus = [] ;
     relevance = 0;
     max = 0;
-    index = 0;
+    index = -1;
+    printlin = 0;
 
     #file_list = glob.glob(os.path.join(os.getcwd(), "sketches txt files", "*.txt")) ;
 
@@ -16,15 +17,16 @@ def main():
     lines = myfile.readlines()
 
     for line in lines:
-        if line.contains("soccer"):
+        index = index+1;
+        if "soccer" in line:
             relevance = relevance + 1;
-        if relevance > max:
-            index = line;
+        if (relevance > max):
+            printlin = index;
         relevance = 0;
-    print(lines[index]);
-    return lines[index] ; 
+    print(lines[printlin]);
+    return lines[printlin] ;
 
-
+main();
 
 #    with open(file_path) as f_input:
 #        corpus.append(f_input.read())

@@ -1,3 +1,5 @@
+# This file may not be used
+########################################################################################
 # # each time you crawl, clear out your database and start over:
 # conn = helpers.create_or_replace_table()
 
@@ -18,6 +20,7 @@
 # except:
 #     print('Your web page did not open automatically.')
 
-import sqlite3
-import bs4
-from urllib.request import urlopen
+# import sqlite3
+# import bs4
+# from urllib.request import urlopen
+########################################################################################

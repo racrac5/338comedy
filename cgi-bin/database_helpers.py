@@ -1,3 +1,5 @@
+# Make sure entries in database are unique?
+
 import sqlite3
 import bs4
 from urllib.request import urlopen
@@ -5,26 +7,39 @@ from urllib.request import urlopen
 def create_or_replace_table():
     conn = sqlite3.connect('comedy338.db')
     cur = conn.cursor()
-    cur.execute('DROP TABLE IF EXISTS Pages')
+    cur.execute('DROP TABLE IF EXISTS Comedy')
     cur.execute('''
-    CREATE TABLE IF NOT EXISTS "COMEDY" (
-        "trope" CHAR(2000),
+    CREATE TABLE IF NOT EXISTS "Comedy" (
+        "trope" TEXT,
         "humor" TEXT,
-        "body" TEXT)
+        "prompt" TEXT)
     ''')
     return conn
 
-def insert_into_database(conn, trope, humor, body):
+def insert_all_values_into_database(conn, trope, humor, prompt):
     cur = conn.cursor()
-    cur.execute("INSERT INTO COMEDY VALUES (?, ?, ?)", (trope, humor, body))
+    cur.execute("INSERT INTO Comedy VALUES (?, ?, ?)", (trope, humor, prompt))
     conn.commit()
 
-def get_matching_values(conn, search_term):
+def get_matching_value_from_column(conn, column, search_term):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM COMEDY WHERE body LIKE ?", ('%'+search_term+'%',))
+    try:
+        cur.execute("SELECT * FROM Comedy WHERE (%s) LIKE ?" % (column), ('%'+search_term+'%',))
+        rows = cur.fetchall()
+        return rows
+    except:
+        print("An exception occurred")
+
+def get_table(conn):
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Comedy")
     rows = cur.fetchall()
     return rows
 
+
+
+
+# This function may not be used
 ###########################################################################################
 # def update_page_rank(conn, visited):
     # cur = conn.cursor()
@@ -38,3 +53,4 @@ def get_matching_values(conn, search_term):
 # # print(os.path.dirname(os.path.abspath(sys.argv[0]))) #prints C:\Users\jairr\Downloads\hw05\hw05
 
 # print(get_file_path('nu.db', subdirectory='results')) # prints results\nu.db or nu.db
+###########################################################################################

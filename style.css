@@ -1,27 +1,23 @@
-/*h1 {
-font-weight: bold;
-font-size: 32pt;
-text-align: center;}
-
-h3 {
-  text-align: center;
+.greetingBox{
+	border: 1px solid black;
 }
 
-p {
-  color : black;
-  font-family: sans-serif;
-  font-size: 18pt;
-  text-align: center;
-}
-#Aboutus {
-  font-size: 14pt;
-  text-align: center;
+.instructionBox{
+	border: 1px solid black;
 }
 
-li b {font-size: 18pt;}
-
-entry{
-horizontal-align: center;
+.formBox{
+	border: 1px solid black;
 }
 
-*/
+.inputBox{
+	border: 1px solid black;
+}
+
+.submitBox{
+	border: 1px solid black;
+}
+
+.tableBox{
+	border: 1px solid black;
+}

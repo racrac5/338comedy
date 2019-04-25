@@ -1,21 +1,21 @@
-<html lang="en">
+<!DOCTYPE html>
   <head>
     <meta charset="utf-8"/> 
     <title>AI Improviser</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/style.css">
   </head>
 
   <body>
-    <h1>
+    <h1 class="greetingBox">
       Welcome to the AI Improviser.  
     </h1>
-    <h2>
+    <h2 class="instructionBox">
       Instructions will go here.
     </h2>
 
-    <form action="cgi-bin/parser.py" method="post">
-      First Name: <input type="text" name="first_name" placeholder="e.g. Barack" required="required" autofocus />
-      Last Name: <input type="text" name="last_name" placeholder="e.g. Obama" required="required"/>
-      <input type="submit" name="submitprompt" value="Submit"/>
+    <form class="formBox" action="cgi-bin/parser.py" method="post">
+      Prompt: <input class="inputBox" type="text" name="prompt" placeholder="e.g. Monkey" required="required" autofocus />
+      <input class="submitBox" type="submit" name="submitprompt" value="Submit"/>
     </form>
 
   </body>  

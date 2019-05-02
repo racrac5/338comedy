@@ -6,6 +6,11 @@ import random
 from scriptsetup import *
 from nltk.tokenize import word_tokenize
 
+
+#All of our comedy scripts will be in one folder. 
+#We will make a list of FinalElements (A class we make here)
+#This FinalElement exists 1 per comedy script, and has all the information on tags and their strengths. 
+
 class FinalElement:
 	def __init__(self, name, tags, strengths):
 		self.name = name
@@ -15,16 +20,19 @@ class FinalElement:
 
 os.chdir("sketches txt files")
 
+#final is the list of all FinalElements, or the list of all filenames with their stored info.
 final = []
 
 
-
+#for every filename in a folder, we make an empty list of tags and strengths and make a FinalElement for it.
 for filename in filenames:
 	tags = []
 	strengths = []
 
 	curr = FinalElement(filename, tags, strengths)
 
+
+	#now we open the file and begin to tokenize it.
 	with open(filename, 'r+') as myfile:
 		lines = myfile.read()
 		sentences = nltk.sent_tokenize(lines)
@@ -36,16 +44,23 @@ for filename in filenames:
 					nouns.append(word)
 
 
-
+		#after tokenizing all nouns (most likely tags, search to see if any of them match our tags (stored in dictionaries.)
 		for x in nouns:
 			for group in list.dictdict:
 				if x.lower() in list.dictdict[group].values():
-					curr.tags.append(x)
-					curr.strengths.append(3)
-			#I'd probably write tags at the top and then check all the dicts and append those instead
+					#if noun is in our dictionaries, check and see if it's already been tagged. 
+					if(x.lower() not in curr.tags):
+						#if not, add it to the taggs list and also add a "1" to the strengths list
+						curr.tags.append(x.lower())
+						curr.strengths.append(1)
+					else: 
+						#if it is, get that element's index number and increase the strength for that element number by 1.
+						i = curr.tags.index(x.lower())
+						curr.strengths[i] = curr.strengths[i] + 1
 
+	#close them files
 	myfile.close()
-
+	#add the FinalElement curr to the big list.
 	final.append(curr)
 
 test = final[0].tags
@@ -56,3 +71,7 @@ for item in test:
 
 for items in test2:
 	print(items)
+
+
+#this example shows that in alurn.txt, there are two nouns that are in our dictionaries: park and bar. 
+#park appears once, bar twice. And that's right if you check the file. And it works if you say bar again, for instance.

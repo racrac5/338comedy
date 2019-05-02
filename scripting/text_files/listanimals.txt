@@ -17,6 +17,7 @@ Badger
 Bandicoot
 BangleTiger
 Bat
+Bear
 BeardedDragon
 Beaver
 BelugaWhale

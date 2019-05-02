@@ -1,10 +1,8 @@
 import sys
-import sorting
+import sorting 
 import nltk
 import tagging
-import random
-from tagging import *
-from sorting import *
+import random	
 from nltk.tokenize import word_tokenize
 
 

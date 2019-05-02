@@ -24,3 +24,21 @@ if(inputPair[1].lower() == "crocodile"):
 	print("\n line 1 was from 'soccercommentating.txt'")
 	print("\n line 2 was from 'funnyansweringmachinemessages.txt'")
 	print("\n line 3 was from 'secretsanta.txt'")
+
+
+if(inputPair[1].lower() == "bear"):
+	print("Bear! That's greatt.")
+	print("Generating two other random prompts")
+	print("Generated: gladiator")
+	print("Generated: bar")
+
+
+	print("\nLEONIDAS: You have to fight! I have command over you!")
+	print("\nCLEOMENES: Me bear. Me kill you.")
+	print("\nLEONIDAS:  Ow! My hand!")
+
+
+	print("\n line 1 was from '300 spartans'")
+	print("\n line 2 was from 'barelyadocumentary.txt'")
+	print("\n line 3 was from 'alurn.txt'")
+

@@ -15,6 +15,7 @@ animaldict = dict()
 placedict = dict()
 occupationdict = dict()
 dictdict = dict()
+eventdict = dict()
 
 try:
 	with open('text_files/listanimals.txt', 'r') as myfile:
@@ -48,9 +49,21 @@ try:
 		i = i + 1
 	myfile.close()
 
+	with open('text_files/events.txt', 'r') as myfile:
+		data = myfile.read()
+	grabAnimal = word_tokenize(data)
+	i=0
+	for newitem in grabAnimal :
+		newitem = newitem.lower()
+		entry = newitem
+		eventdict[i] = entry
+		i = i + 1
+	myfile.close()
+
 	dictdict[0] = animaldict
 	dictdict[1] = placedict
 	dictdict[2] = occupationdict
+	dictdict[3] = eventdict
 
 
 

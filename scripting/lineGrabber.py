@@ -5,7 +5,7 @@ from tagging import * # used to be ../scripting/tagging.py
 
 def main():
  
-    searchword = "park" ## this will need to be linked to the front end
+    searchword = "christmas" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0

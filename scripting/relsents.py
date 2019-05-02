@@ -15,7 +15,7 @@ for y in final:
 		bingo = final.index(y)
 		test = 1
 		break
-		
+
 if(test == 1):
 	with open(inputname, 'r+') as myfile:
 			lines = myfile.read()

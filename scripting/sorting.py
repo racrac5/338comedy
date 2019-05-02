@@ -2,6 +2,7 @@ import sys
 import list
 import nltk
 import random
+import tagging
 from nltk.tokenize import word_tokenize
 
 
@@ -21,6 +22,10 @@ if inputPair[1].lower() in list.dictdict[int(inputPair[0], 10)].values():
     print(inputPair[1])
     print(randval1)
     print(randval2)
+
+
+
+
 
 else:
     print("ERROR: given category does not match input")

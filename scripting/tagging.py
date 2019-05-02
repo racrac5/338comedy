@@ -1,6 +1,5 @@
 import sys
 import list
-import sorting
 import nltk
 import random
 from scriptsetup import *

@@ -9,9 +9,15 @@ import random
 
 
 def main():
+<<<<<<< HEAD
 
     searchword2 = "MS-13"
     searchword1 = "obama" ## this will need to be linked to the front end
+=======
+ 
+    searchword = "dog"
+   # searchword = "christmas" ## this will need to be linked to the front end
+>>>>>>> d0e8eed3c9ed2723e12212dca98b4c199f7e8e81
     corpus = []
     relevance = 0
     max_amount = 0
@@ -69,7 +75,6 @@ def main():
     bestFitScript = final[bestFitIndex].name  #grabs name of most relevant file as determined by tagger
 
     # not necessary to seach whole folder now, they are working on tags as object feature
-    os.chdir("../sketches txt files")
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
     printlin = 0
@@ -83,6 +88,7 @@ def main():
             max_amount = relevance
         relevance = 0
 
+<<<<<<< HEAD
     if printlin < len(lines):
         print(printlin)
         unedited = lines[printlin]
@@ -96,6 +102,14 @@ def main():
         randoline = len(lines)# random number here of all the lines
         print("THIS IS RANDOM, printlin was out of bounds (2)")
         print(lines[random.randint(0,randoline)])
+=======
+    if printlin != -1:
+       print(lines[0])
+    else: 
+        printlin = len(lines)# random number here of all the lines 
+        print(lines[random.randint(0,printlin)])
+
+>>>>>>> d0e8eed3c9ed2723e12212dca98b4c199f7e8e81
 
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them

@@ -97,16 +97,11 @@ def main():
         print("THIS IS RANDOM, printlin was out of bounds (2)")
         print(lines[random.randint(0,randoline)])
 
-    punchscripts = []
-    curr = FinalElement("testpunch.txt", [], [])
-    punchscripts.append(curr)
-
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them
     bestFitScript = punchscripts[bestFitIndex].name
     myfile.close()
-    bestFitScript = "testpunch.txt"
-    os.chdir("../sketches txt files")
+
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
 

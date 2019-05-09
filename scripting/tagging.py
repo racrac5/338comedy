@@ -32,7 +32,7 @@ for filename in filenames:
 
 
 	#now we open the file and begin to tokenize it.
-	with open(filename, 'r+') as myfile:
+	with open(filename, encoding="utf8") as myfile:
 		lines = myfile.read()
 		sentences = nltk.sent_tokenize(lines)
 		nouns = []

@@ -10,7 +10,7 @@ import random
 
 def main():
 
-    searchword2 = "hamburger"
+    searchword2 = "MS-13"
     searchword1 = "obama" ## this will need to be linked to the front end
     corpus = []
     relevance = 0

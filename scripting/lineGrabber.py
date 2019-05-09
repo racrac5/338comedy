@@ -10,8 +10,8 @@ import random
 
 def main():
  
-    searchword = "park"
-    searchword = "christmas" ## this will need to be linked to the front end
+    searchword = "dog"
+   # searchword = "christmas" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0
@@ -60,7 +60,6 @@ def main():
     bestFitScript = final[bestFitIndex].name  #grabs name of most relevant file as determined by tagger
 
     # not necessary to seach whole folder now, they are working on tags as object feature
-    os.chdir("../sketches txt files")
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
 
@@ -76,16 +75,12 @@ def main():
         printlin = len(lines)# random number here of all the lines 
         print(lines[random.randint(0,printlin)])
 
-    punchscripts = []
-    curr = FinalElement("testpunch.txt", [], [])
-    punchscripts.append(curr)
 
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them
     bestFitScript = punchscripts[bestFitIndex].name
     myfile.close()
-    bestFitScript = "testpunch.txt"
-    os.chdir("../sketches txt files")
+
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
 

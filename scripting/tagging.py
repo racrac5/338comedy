@@ -4,31 +4,34 @@ import nltk
 import random
 from scriptsetup import *
 from nltk.tokenize import word_tokenize
-
+import re
 
 #All of our comedy scripts will be in one folder. 
 #We will make a list of FinalElements (A class we make here)
 #This FinalElement exists 1 per comedy script, and has all the information on tags and their strengths. 
 
 class FinalElement:
-	def __init__(self, name, tags, strengths):
+	def __init__(self, name, tags, strengths, punchlines):
 		self.name = name
 		self.tags = tags
 		self.strengths = strengths
+		self.punchlines = punchlines
 
 
 os.chdir("sketches txt files")
 
 #final is the list of all FinalElements, or the list of all filenames with their stored info.
 final = []
+punchscripts = []
 
 
 #for every filename in a folder, we make an empty list of tags and strengths and make a FinalElement for it.
 for filename in filenames:
 	tags = []
 	strengths = []
+	punchlines = []
 
-	curr = FinalElement(filename, tags, strengths)
+	curr = FinalElement(filename, tags, strengths, punchlines)
 
 
 	#now we open the file and begin to tokenize it.
@@ -52,13 +55,28 @@ for filename in filenames:
 						#if not, add it to the taggs list and also add a "1" to the strengths list
 						curr.tags.append(x.lower())
 						curr.strengths.append(1)
+
 					else: 
 						#if it is, get that element's index number and increase the strength for that element number by 1.
 						i = curr.tags.index(x.lower())
 						curr.strengths[i] = curr.strengths[i] + 1
 
+
+
 	#close them files
 	myfile.close()
+
+
+	#Go through and find punchlines. Add punchlines into their FinalElem place and add those Currs to punchscripts
+	with open(filename, encoding="utf8") as myfile:
+		plines = myfile.readlines()
+		for pline in plines:
+			if("!!!PUNCH!!!" in pline):
+				result = re.search('!!!PUNCH!!!(.*)!!!PUNCH!!!', pline)
+				curr.punchlines.append(result.group(1))
+				punchscripts.append(curr)
+	myfile.close()
+
 	#add the FinalElement curr to the big list.
 	final.append(curr)
 

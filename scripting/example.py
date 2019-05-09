@@ -3,6 +3,7 @@ import sorting
 import nltk
 import tagging
 import random	
+from sorting import *
 from nltk.tokenize import word_tokenize
 
 

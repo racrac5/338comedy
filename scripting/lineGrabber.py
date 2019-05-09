@@ -9,9 +9,9 @@ import random
 
 
 def main():
- 
-    searchword = "park"
-    searchword = "christmas" ## this will need to be linked to the front end
+
+    searchword2 = "hamburger"
+    searchword1 = "obama" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0
@@ -21,9 +21,9 @@ def main():
     bestFitIndex = random.randint(0, len(final) - 1) #this should be a random number of all the scripts
 
     for x in final:
-        if searchword in x.tags:
-            if strengthmax < x.strengths[(x.tags.index(searchword))]:
-                strengthmax = x.strengths[(x.tags.index(searchword))]
+        if searchword1 in x.tags:
+            if strengthmax < x.strengths[(x.tags.index(searchword1))]:
+                strengthmax = x.strengths[(x.tags.index(searchword1))]
                 bestFitIndex = final.index(x)
 
     bestFitScript = final[bestFitIndex].name  #grabs name of most relevant file as determined by tagger
@@ -35,26 +35,35 @@ def main():
 
     for line in lines:
         index += 1
-        if searchword in line.lower(): relevance += 1
-        if (relevance > max_amount): printlin = index
+        if searchword1 in line.lower(): relevance += 1
+        if ":" not in line: relevance = -5
+        if (relevance > max_amount):
+            printlin = index
+            max_amount = relevance
         relevance = 0
 
-    if printlin != -1:
-       print(lines[0])
-    else: 
-        printlin = len(lines)# random number here of all the lines 
-        print(lines[random.randint(0,printlin)])
-
+    if printlin < len(lines):
+        unedited = lines[printlin]
+        if ":" in unedited:
+            edited = unedited.split(':')[1]#unedited minus brackets or replace character names up until colon
+            print("A:" +edited)
+        else:
+            print(unedited)
+        #print(lines[printlin])
+    else:
+        randoline = len(lines)# random number here of all the lines
+        print("THIS IS RANDOM, printlin was out of bounds (1)")
+        print(lines[random.randint(0,randoline)])
 
     myfile.close()
 
     bestFitIndex = random.randint(0, len(final) - 1)
 
-#get a second one 
+#get a second one
     for x in final:
-        if searchword in x.tags:
-            if strengthmax < x.strengths[(x.tags.index(searchword))]:
-                strengthmax = x.strengths[(x.tags.index(searchword))]
+        if searchword2 in x.tags:
+            if strengthmax < x.strengths[(x.tags.index(searchword2))]:
+                strengthmax = x.strengths[(x.tags.index(searchword2))]
                 bestFitIndex = final.index(x)
 
     bestFitScript = final[bestFitIndex].name  #grabs name of most relevant file as determined by tagger
@@ -63,18 +72,30 @@ def main():
     os.chdir("../sketches txt files")
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
+    printlin = 0
 
     for line in lines:
         index += 1
-        if searchword in line.lower(): relevance += 1
-        if (relevance > max_amount): printlin = index
+        if searchword2 in line.lower(): relevance += 1
+        if ":" not in line: relevance = -5
+        if (relevance > max_amount):
+            printlin = index
+            max_amount = relevance
         relevance = 0
 
-    if printlin != -1:
-       print(lines[0])
-    else: 
-        printlin = len(lines)# random number here of all the lines 
-        print(lines[random.randint(0,printlin)])
+    if printlin < len(lines):
+        print(printlin)
+        unedited = lines[printlin]
+        if ":" in unedited:
+            edited = unedited.split(':')[1]#unedited minus brackets or replace character names up until colon
+            print("B:" +edited)
+        else:
+            print(unedited)
+        #print(lines[printlin])
+    else:
+        randoline = len(lines)# random number here of all the lines
+        print("THIS IS RANDOM, printlin was out of bounds (2)")
+        print(lines[random.randint(0,randoline)])
 
     punchscripts = []
     curr = FinalElement("testpunch.txt", [], [])
@@ -96,4 +117,3 @@ def main():
     myfile.close()
 
 main()
-

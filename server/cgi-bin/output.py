@@ -1,38 +1,49 @@
 # python3 -m http.server --cgi 8000
 #!/usr/bin/python
 import cgi, cgitb
-import sqlite3
-import bs4
+import os
+import sys
 from urllib.request import urlopen
-import database_helpers
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'scripting')))
+import tagging
+import lister
+import nltk
+import random
+from nltk.tokenize import word_tokenize
 
-conn = database_helpers.create_or_replace_table()
+
+#################################################################################################
 
 form = cgi.FieldStorage()
+dropdown = form.getvalue('dropdown')
 prompt = form.getvalue('prompt')
+
+index = 0
+if dropdown == "Place": index = 1
+elif dropdown == "Occupation": index = 2
+
+randval1 = 0
+randval2 = 0
+#Check to see if input is valid in our lists
+if prompt.lower() in lister.dictdict[index].values():
+    #Pick two other random values from the list 
+    randval1 = random.choice(random.choice(lister.dictdict))
+    randval2 = random.choice(random.choice(lister.dictdict))
+
+# add error check
 
 print("Content-type:text/html")
 print("")
 print("")
 print(""" 
 	<head>
-    	<meta charset="utf-8"/> 
-    	<link rel="stylesheet" type="text/css" href="http://localhost:8000/style.css">
- 	</head>
-	""")
-
-# Make sure entries in database are unique?
-database_helpers.insert_all_values_into_database(conn, "walk into a bar", "standard", prompt)
-database_helpers.insert_all_values_into_database(conn, "off a cliff", "dark", prompt)
-database_helpers.insert_all_values_into_database(conn, "off a cliff", "dark", "dog")
-
-rows = database_helpers.get_matching_value_from_column(conn, "humor", "dark") #get rows that have the term "dark" in the "humor" column
-table = database_helpers.get_table(conn)
-
-print("""
- <body>
-     <p>This was your prompt: %s</p>
- 	 <p class="tableBox">Here is the entire table: %s</p>
-	 <p>Searched rows: %s</p>
- </body>
-""" % (prompt, table, rows))
+		<meta charset="utf-8"/> 
+		<link rel="stylesheet" type="text/css" href="http://localhost:8000/style.css">
+	</head>
+	<body>
+		<p class="wordBox">This was your topic: %s (Choice #%s)</p>
+		<p class="wordBox">This was your prompt: "%s"</p>
+		<p class="wordBox">Here is randval1: %s</p>
+		<p class="wordBox">Here is randval2: %s</p>	
+	</body>
+""" % (dropdown, index, prompt, randval1, randval2))

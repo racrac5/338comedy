@@ -1,30 +1,37 @@
 <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8"/> 
     <title>AI Improviser</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8000/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid" background="laughingrobot.jpg">
       <h1 class="greetingBox">
-        Welcome to the AI Improviser.  
+        I am the AI Improviser  
       </h1>
 
       <h2 class="instructionBox">
-        Instructions will go here.
+        <ol>
+          <li>Pick a category from the drop down menu.</li>
+          <li>Type a single word related to that category.</li>
+          <li>Hit the submit button.</li>
+          <li>👀</li>
+        </ol>
       </h2>
 
       <form class="formBox" action="cgi-bin/output.py" method="post">
-        <select name="dropdown" autofocus/>
+        <select class="custom-select-sm mb-1" name="dropdown" autofocus/>
           <option value="Animal" selected>Animal</option>
           <option value="Place">Place</option>
           <option value="Occupation">Occupation</option>
         </select>
-        <input class="inputBox" type="text" name="prompt" placeholder="e.g. Monkey" required="required" />
-        <input class="submitBox" type="submit" name="submitprompt" value="Submit"/>
+        <input class="form-control-sm" type="text" name="prompt" placeholder="e.g. Monkey" required="required" />
+        <input class="btn btn-dark" type="submit" value="Submit"/>
       </form>
     <div>
   </body>  
-
 </html>

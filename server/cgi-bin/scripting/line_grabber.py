@@ -50,7 +50,7 @@ def main():
 
     bestFitIndex = random.randint(0, len(final) - 1)
 
-#get a second one 
+    #get a second one 
     for x in final:
         if searchword in x.tags:
             if strengthmax < x.strengths[(x.tags.index(searchword))]:

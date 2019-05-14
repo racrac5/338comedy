@@ -85,12 +85,12 @@ for filename in filenames:
 
 test = final[0].tags
 test2 = final[0].strengths
-print(final[0].name)
-for item in test:
-	print(item)
+#print(final[0].name)
+#for item in test:
+#	print(item)
 
-for items in test2:
-	print(items)
+#for items in test2:
+#	print(items)
 
 
 #this example shows that in alurn.txt, there are two nouns that are in our dictionaries: park and bar. 

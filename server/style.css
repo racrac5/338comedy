@@ -1,0 +1,60 @@
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-image: linear-gradient(red, yellow);
+}
+
+.greetingBox{
+	border: 1px solid black;
+	text-align: center;
+	background-image: linear-gradient(to right, red , yellow);
+}
+
+.instructionBox{
+	border: 1px solid black;
+	text-align: center;
+	background-image: linear-gradient(to right, red , yellow);
+}
+
+.formBox{
+	border: 1px solid black;
+	text-align: center;
+	background-image: linear-gradient(to right, red , yellow);
+}
+
+/**********************************************************************/
+input[type=submit]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}	
+
+input[type=text] {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+.inputBox{
+	border: 1px solid black;
+}
+
+.submitBox{
+	border: 1px solid black;
+}
+
+.wordBox{
+	border: 1px solid black;
+}

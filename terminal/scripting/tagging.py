@@ -1,5 +1,6 @@
 import sys
-import list
+#import list
+import fulllist
 import nltk
 import random
 from scriptsetup import *
@@ -48,8 +49,10 @@ for filename in filenames:
 
 		#after tokenizing all nouns (most likely tags, search to see if any of them match our tags (stored in dictionaries.)
 		for x in nouns:
-			for group in list.dictdict:
-				if x.lower() in list.dictdict[group].values():
+			#for group in list.dictdict:
+			for group in fulllist.dictdict:
+				#if x.lower() in list.dictdict[group].values():
+				if x.lower() in fulllist.dictdict[group].values():
 					#if noun is in our dictionaries, check and see if it's already been tagged. 
 					if(x.lower() not in curr.tags):
 						#if not, add it to the taggs list and also add a "1" to the strengths list

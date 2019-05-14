@@ -104,20 +104,13 @@ def main():
     else:
         randoline = len(lines)# random number here of all the lines
         print("THIS IS RANDOM, printlin was out of bounds (2)")
-        print(lines[random.randint(0,randoline)])
+        print(lines[random.randint(0,randoline -1)])
 
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them
     bestFitScript = punchscripts[bestFitIndex].name
+    print(punchscripts[bestFitIndex].punchlines[random.randint(0, len(punchscripts[bestFitIndex].punchlines) -1)])
     myfile.close()
 
-    myfile = open(bestFitScript, encoding="utf8")
-    lines = myfile.readlines()
-
-    for line in lines:
-        if('!!!PUNCH!!!' in line):
-            result = re.search('!!!PUNCH!!!(.*)!!!PUNCH!!!', line)
-            print(result.group(1))
-    myfile.close()
 
 main()

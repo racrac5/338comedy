@@ -83,9 +83,9 @@ for filename in filenames:
 	#add the FinalElement curr to the big list.
 	final.append(curr)
 
-test = final[0].tags
-test2 = final[0].strengths
-print(final[0].name)
+test = final[2].tags
+test2 = final[2].strengths
+print(final[2].name)
 for item in test:
 	print(item)
 

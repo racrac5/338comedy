@@ -83,14 +83,14 @@ for filename in filenames:
 	#add the FinalElement curr to the big list.
 	final.append(curr)
 
-test = final[0].tags
-test2 = final[0].strengths
-#print(final[0].name)
-#for item in test:
-#	print(item)
+test = final[2].tags
+test2 = final[2].strengths
+print(final[2].name)
+for item in test:
+	print(item)
 
-#for items in test2:
-#	print(items)
+for items in test2:
+	print(items)
 
 
 #this example shows that in alurn.txt, there are two nouns that are in our dictionaries: park and bar. 

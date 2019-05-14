@@ -10,8 +10,8 @@ import random
 
 def main():
 
-    searchword2 = "MS-13"
-    searchword1 = "obama" ## this will need to be linked to the front end
+    searchword2 = "santa"
+    searchword1 = "captain" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0
@@ -36,7 +36,9 @@ def main():
     for line in lines:
         index += 1
         if searchword1 in line.lower(): relevance += 1
-        if ":" not in line: relevance = -5
+        #if ":" not in line: relevance = -5
+        if line[0] == '[':
+            continue
         if (relevance > max_amount):
             printlin = index
             max_amount = relevance
@@ -59,6 +61,9 @@ def main():
 
     bestFitIndex = random.randint(0, len(final) - 1)
 
+
+
+
 #get a second one
     for x in final:
         if searchword2 in x.tags:
@@ -72,42 +77,40 @@ def main():
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
     printlin = 0
+    index = -1
+    max_amount = 0
+
 
     for line in lines:
         index += 1
         if searchword2 in line.lower(): relevance += 1
-        if ":" not in line: relevance = -5
-        if (relevance > max_amount):
+        #if ":" not in line: relevance = -5
+        if line[0] == '[':
+            continue
+        if relevance > max_amount:
             printlin = index
             max_amount = relevance
         relevance = 0
 
     if printlin < len(lines):
-        print(printlin)
         unedited = lines[printlin]
-        if ":" in unedited:
-            edited = unedited.split(':')[1]#unedited minus brackets or replace character names up until colon
-            print("B:" +edited)
+        if ':' in unedited:
+            #unedited minus brackets or replace character names up until colon
+            edited = unedited.split(':')[1]
+            print("B: " +edited)
         else:
             print(unedited)
         #print(lines[printlin])
     else:
         randoline = len(lines)# random number here of all the lines
         print("THIS IS RANDOM, printlin was out of bounds (2)")
-        print(lines[random.randint(0,randoline)])
+        print(lines[random.randint(0,randoline -1)])
 
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them
     bestFitScript = punchscripts[bestFitIndex].name
+    print(punchscripts[bestFitIndex].punchlines[random.randint(0, len(punchscripts[bestFitIndex].punchlines) -1)])
     myfile.close()
 
-    myfile = open(bestFitScript, encoding="utf8")
-    lines = myfile.readlines()
-
-    for line in lines:
-        if('!!!PUNCH!!!' in line):
-            result = re.search('!!!PUNCH!!!(.*)!!!PUNCH!!!', line)
-            print(result.group(1))
-    myfile.close()
 
 main()

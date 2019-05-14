@@ -1,11 +1,13 @@
 Accessorydesigner
 Advertisingdesigner
 Animator
+Anchor
 Architect
 Artadministrator
 Artisan
 Artsadministration
 Baker
+Captain
 Ceramicsartist
 Chiefcreativeofficer
 Colorist
@@ -36,6 +38,7 @@ Photographer
 Photojournalist
 Potter
 Productiondesigner
+Santa
 Sculptor
 Setdecorator
 Setdresser

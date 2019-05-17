@@ -99,7 +99,7 @@ def main():
     bestFitIndex = random.randint(0, len(punchscripts) - 1)
     #punches is like final, but only of scripts that have punchlines in them
     bestFitScript = punchscripts[bestFitIndex].name
-    print(punchscripts[bestFitIndex].punchlines[random.randint(0, len(punchscripts[bestFitIndex].punchlines) -1)])
+    print("A:" +punchscripts[bestFitIndex].punchlines[random.randint(0, len(punchscripts[bestFitIndex].punchlines) -1)])
     myfile.close()
 
 

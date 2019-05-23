@@ -96,11 +96,15 @@ def nextline(prompt):
 
 
 def newchoice(lastline): 
+    #new choice takes a line and spits out the same line with the last verb changed. 
+
 
     lastverb = ""
     verbs = []
     finsentence = ""
     search = nltk.word_tokenize(str(lastline))
+
+    #tokenize the line so that you can make an array of the verbs in it below
 
     for word,pos in nltk.pos_tag(search):
         if (pos[0] == 'V'):
@@ -108,8 +112,12 @@ def newchoice(lastline):
 
     verbs = verbs[::-1]
 
+    #reverse the array of verbs, now you have the last verb as the first element of the array
+
     os.chdir("../text_files")
 
+
+    #open a file of all the verbs in English, pick a random one and place it in "finsentence" with the newline cut out.
     myfile = open("verblist.txt", encoding="utf8")
     lines = myfile.readlines()
     finsentence += lines[random.randint(0, len(lines) - 1)]
@@ -117,12 +125,18 @@ def newchoice(lastline):
         finsentence = finsentence.replace("\n", "")
 
     if(len(verbs) > 0):
+        #if there are verbs in the sentence:
         if verbs[0] in lastline:
+            #reverse the last line so that you can replace the FIRST instance of that verb - replace just does the first one 
             lastline = lastline[::-1]
+            #reverse the verb so that when you replace it into a reversed sentence, it's not backwards
             verbs[0] = verbs[0][::-1]
             finsentence = finsentence[::-1]
+            #replace the verb in the reversed sentence with the reversed random verb
             lastverb = lastline.replace(verbs[0],finsentence,1)
+            #reverse it back to forwards
             lastverb = lastverb[::-1]
+            #print the new version of the line 
             print(lastverb)
 
 

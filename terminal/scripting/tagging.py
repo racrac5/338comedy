@@ -76,8 +76,9 @@ for filename in filenames:
 		for pline in plines:
 			if("!!!PUNCH!!!" in pline):
 				result = re.search('!!!PUNCH!!!(.*)!!!PUNCH!!!', pline)
-				curr.punchlines.append(result.group(1))
-				punchscripts.append(curr)
+				if result: 
+					curr.punchlines.append(result.group(1))
+					punchscripts.append(curr)
 	myfile.close()
 
 	#add the FinalElement curr to the big list.

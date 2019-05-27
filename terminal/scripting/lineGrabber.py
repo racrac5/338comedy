@@ -6,12 +6,12 @@ from tagging import * # used to be ../scripting/tagging.py
 import re
 import random
 
-
+## THIS is the Ryan edit to fit  used to ___ but then I _____ game  (actual)
 
 def main():
 
-    searchword2 = "santa"
-    searchword1 = "captain" ## this will need to be linked to the front end
+    searchword2 = "run" ## search verb 2, maybe the replacement verb
+    searchword1 = "read" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0

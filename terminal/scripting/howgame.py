@@ -6,26 +6,73 @@ from tagging import * # used to be ../scripting/tagging.py
 import re
 import random
 
-def cyclic():
 
 
-    myfile = open("verblist.txt", encoding="utf8")
-    lines = myfile.readlines()
+def cyclic(reps):
+    global finsentencev1
+    global respverb1
+    if reps == 0:
+        myfile = open("verblist.txt", encoding="utf8")
+        lines = myfile.readlines()
 
-    finsentence = ""
-    finsentence += "I "
-    finsentence += lines[random.randint(0, len(lines) - 1)]
-    finsentence += " it"
-    if("\n" in finsentence):
-        finsentence = finsentence.replace("\n", "")
-    myfile.close()
+        finsentence = ""
+        finsentence += "I "
 
-    print(finsentence)
+        finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+        finsentence += finsentencev1
+        finsentence += " it"
+        if("\n" in finsentence):
+            finsentence = finsentence.replace("\n", "")
+
+        respsentence = ""
+        respsentence += "Why "
+        respsentence += finsentencev1
+        respsentence += " it when you could "
+
+        respverb1 = lines[random.randint(0, len(lines) - 1)]
+        respsentence += respverb1
+        respsentence += " it? "
+        if("\n" in respsentence):
+            respsentence = respsentence.replace("\n", "")
+        myfile.close()
+
+        print(finsentence)
+        print(respsentence)
+
+    else:
+        myfile = open("verblist.txt", encoding="utf8")
+        lines = myfile.readlines()
+
+        finsentence = ""
+        finsentence += "I "
+
+        finsentencev1 = respverb1
+        finsentence += finsentencev1
+        respverb1 = finsentencev1
+        finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+        finsentence += " it"
+        if("\n" in finsentence):
+            finsentence = finsentence.replace("\n", "")
+
+        respsentence = ""
+        respsentence += "Why "
+        respsentence += respverb1
+        respsentence += " it when you could "
+
+        respverb1 = finsentencev1
+        respsentence += respverb1
+        respsentence += " it? "
+        if("\n" in respsentence):
+            respsentence = respsentence.replace("\n", "")
+        myfile.close()
+
+        print(finsentence)
+        print(respsentence)
 
 
 
 def main():
-
+    creps = 0
     searchword2 = "war"
     searchword1 = "dancer" ## this will need to be linked to the front end
     corpus = []
@@ -78,16 +125,14 @@ def main():
     while True:
         name = input("New choice? C for yes. X to end.\n>")
         if(name.lower() == "c"):
-            cyclic()
+            cyclic(creps)
+            creps += 1
         elif(name.lower() == "x"):
             break
-  
-  
+
+
 
 
 
 
 main()
-
-
-

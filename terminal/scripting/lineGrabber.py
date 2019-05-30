@@ -6,12 +6,12 @@ from tagging import * # used to be ../scripting/tagging.py
 import re
 import random
 
-
+## THIS is the Ryan edit to fit  used to ___ but then I _____ game  (actual)
 
 def main():
 
-    searchword2 = "war"
-    searchword1 = "dancer" ## this will need to be linked to the front end
+    searchword2 = "run" ## search verb 2, maybe the replacement verb
+    searchword1 = "read" ## this will need to be linked to the front end
     corpus = []
     relevance = 0
     max_amount = 0
@@ -36,7 +36,9 @@ def main():
     for line in lines:
         index += 1
         if searchword1 in line.lower(): relevance += 1
-        if ":" not in line: relevance = -5
+        #if ":" not in line: relevance = -5
+        if line[0] == '[':
+            continue
         if (relevance > max_amount):
             printlin = index
             max_amount = relevance
@@ -59,6 +61,9 @@ def main():
 
     bestFitIndex = random.randint(0, len(final) - 1)
 
+
+
+
 #get a second one
     for x in final:
         if searchword2 in x.tags:
@@ -72,22 +77,27 @@ def main():
     myfile = open(bestFitScript, encoding="utf8")
     lines = myfile.readlines()
     printlin = 0
+    index = -1
+    max_amount = 0
+
 
     for line in lines:
         index += 1
         if searchword2 in line.lower(): relevance += 1
-        if ":" not in line: relevance = -5
-        if (relevance > max_amount):
+        #if ":" not in line: relevance = -5
+        if line[0] == '[':
+            continue
+        if relevance > max_amount:
             printlin = index
             max_amount = relevance
         relevance = 0
 
     if printlin < len(lines):
-        print(printlin)
         unedited = lines[printlin]
-        if ":" in unedited:
-            edited = unedited.split(':')[1]#unedited minus brackets or replace character names up until colon
-            print("B:" +edited)
+        if ':' in unedited:
+            #unedited minus brackets or replace character names up until colon
+            edited = unedited.split(':')[1]
+            print("B: " +edited)
         else:
             print(unedited)
         #print(lines[printlin])

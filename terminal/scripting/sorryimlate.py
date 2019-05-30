@@ -6,17 +6,22 @@ from tagging import * # used to be ../scripting/tagging.py
 import re
 import random
 
+def main():
+    #### set up ##########
+    print("You're an hour late what the hell happened!? \n>")
+    excuse = input("Tell us in a single word: Why are they late? \n>")
 
-## build in further if statements to parse when nouns can be included for further context,
-## (perhaps odds have noun add in)
+    #### search function ####
+
+    #### stolen from the how game
+
 def cyclic(reps):
     global finsentencev1
     global respverb1
-    wittyretort = [ [" Are you crazy!? You shouldn't " , " that!" ] ,
-     [" That’s a terrible idea… We both know what happened the last time someone tried to " , " one of those. " ] ,
-     [" What kind of freak are you, trying to " , " it. "] ,
-     [" Never say something that stupid again. " ] ,
-     [" You should get your head checked. " ] ]
+    wittyretort = [ [" Nope, after that a " , " came and blocked the road in front of my car!" ] ,
+     [" Well its embarrasing but I ran over a " , " in the parking lot. " ] ,
+     [" I stop to post a picture of a " , " on my instagram. "] ,
+     [" That's none of your goddamn business! " ] ]
 
     if reps == 0:
         myfile = open("verblist.txt", encoding="utf8")
@@ -136,16 +141,11 @@ def main():
     myfile.close()
 
     while True:
-        name = input("New choice? C for yes. X to end.\n>")
+        next = input("Riveting. Is that the only reason? \n>")
         if(name.lower() == "c"):
             cyclic(creps)
             creps += 1
         elif(name.lower() == "x"):
             break
-
-
-
-
-
 
 main()

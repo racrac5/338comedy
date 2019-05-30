@@ -11,28 +11,29 @@ def main():
     print("You're an hour late what the hell happened!? \n>")
     excuse = input("Tell us in a single word: Why are they late? \n>")
 
+    looper()
     #### search function ####
 
     #### stolen from the how game
 
-def cyclic(reps):
+def cyclic(reps, next):
     global finsentencev1
     global respverb1
     wittyretort = [ [" Nope, after that a " , " came and blocked the road in front of my car!" ] ,
      [" Well its embarrasing but I ran over a " , " in the parking lot. " ] ,
      [" I stop to post a picture of a " , " on my instagram. "] ,
-     [" That's none of your goddamn business! " ] ]
+     [" That's none of your goddamn business! Stop being so nosy! " ] ]
 
     if reps == 0:
         myfile = open("verblist.txt", encoding="utf8")
         lines = myfile.readlines()
 
         finsentence = ""
-        finsentence += "You're right I should "
+        finsentence += "Well there was a "
 
         finsentencev1 = lines[random.randint(0, len(lines) - 1)]
-        finsentence += finsentencev1
-        finsentence += " it"
+        finsentence += next
+        finsentence += ""
         if("\n" in finsentence):
             finsentence = finsentence.replace("\n", "")
 
@@ -76,8 +77,8 @@ def cyclic(reps):
                 respverb1 = lines[random.randint(0, len(lines) - 1)]
             else:
                 respsentence = wittyretort[retortselector][0]
-                respverb1 = lines[random.randint(0, len(lines) - 1)]
-
+                #respverb1 = lines[random.randint(0, len(lines) - 1)]
+                return
 
         ##respsentence += respverb1
         ##respsentence += " it? "
@@ -89,7 +90,7 @@ def cyclic(reps):
         print(finsentence)
         print(respsentence)
 
-def main():
+def looper():
     creps = 0
     searchword2 = "war"
     searchword1 = "dancer" ## this will need to be linked to the front end
@@ -142,10 +143,10 @@ def main():
 
     while True:
         next = input("Riveting. Is that the only reason? \n>")
-        if(name.lower() == "c"):
-            cyclic(creps)
-            creps += 1
-        elif(name.lower() == "x"):
+        if(next.lower() == "x"):
             break
+        else:
+            cyclic(creps, next)
+            creps += 1
 
 main()

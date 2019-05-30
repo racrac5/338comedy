@@ -6,26 +6,86 @@ from tagging import * # used to be ../scripting/tagging.py
 import re
 import random
 
-def cyclic():
+
+## build in further if statements to parse when nouns can be included for further context,
+## (perhaps odds have noun add in)
+def cyclic(reps):
+    global finsentencev1
+    global respverb1
+    wittyretort = [ [" Are you crazy!? You shouldn't " , " that!" ] ,
+     [" That’s a terrible idea… We both know what happened the last time someone tried to " , " one of those. " ] ,
+     [" What kind of freak are you, trying to " , " it. "] ,
+     [" Never say something that stupid again. " ] ,
+     [" You should get your head checked. " ] ]
+
+    if reps == 0:
+        myfile = open("verblist.txt", encoding="utf8")
+        lines = myfile.readlines()
+
+        finsentence = ""
+        finsentence += "You're right I should "
+
+        finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+        finsentence += finsentencev1
+        finsentence += " it"
+        if("\n" in finsentence):
+            finsentence = finsentence.replace("\n", "")
+
+        respsentence = ""
+        respsentence += "Why "
+        respsentence += finsentencev1
+        respsentence += " it when you could "
+
+        respverb1 = lines[random.randint(0, len(lines) - 1)]
+        respsentence += respverb1
+        respsentence += " it? "
+        if("\n" in respsentence):
+            respsentence = respsentence.replace("\n", "")
+        myfile.close()
+
+        print(finsentence)
+        print(respsentence)
+
+    else:
+        myfile = open("verblist.txt", encoding="utf8")
+        lines = myfile.readlines()
+
+        finsentence = ""
+        finsentence += " You're right I should "
+
+        finsentencev1 = respverb1
+        finsentence += finsentencev1
+        respverb1 = lines[random.randint(0, len(lines) - 1)]
+        #respverb1 = finsentencev1
+        #finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+        finsentence += " it"
+        if("\n" in finsentence):
+            finsentence = finsentence.replace("\n", "")
+            retortselector = random.randint(0, len(wittyretort) -1)
+            if (retortselector < 3):
+                respsentence = ""
+                respsentence += wittyretort[retortselector][0]
+                respsentence += finsentencev1
+                respsentence += wittyretort[retortselector][1]
+                finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+                respverb1 = lines[random.randint(0, len(lines) - 1)]
+            else:
+                respsentence = wittyretort[retortselector][0]
+                respverb1 = lines[random.randint(0, len(lines) - 1)]
 
 
-    myfile = open("verblist.txt", encoding="utf8")
-    lines = myfile.readlines()
+        ##respsentence += respverb1
+        ##respsentence += " it? "
+        if("\n" in respsentence):
+            if (isinstance(respsentence, str)):
+                respsentence = respsentence.replace("\n", "")
+        myfile.close()
 
-    finsentence = ""
-    finsentence += "I "
-    finsentence += lines[random.randint(0, len(lines) - 1)]
-    finsentence += " it"
-    if("\n" in finsentence):
-        finsentence = finsentence.replace("\n", "")
-    myfile.close()
-
-    print(finsentence)
-
-
+        print(finsentence)
+        print(respsentence)
 
 def main():
-
+    creps = 0
     searchword2 = "war"
     searchword1 = "dancer" ## this will need to be linked to the front end
     corpus = []
@@ -78,16 +138,14 @@ def main():
     while True:
         name = input("New choice? C for yes. X to end.\n>")
         if(name.lower() == "c"):
-            cyclic()
+            cyclic(creps)
+            creps += 1
         elif(name.lower() == "x"):
             break
-  
-  
+
+
 
 
 
 
 main()
-
-
-

@@ -1,5 +1,6 @@
 import nltk
 
+#Ryan edit to fit the I used to ____ but then I _____ format
 def main():
     searchword = "soccer"
     corpus = []

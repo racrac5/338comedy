@@ -7,10 +7,17 @@ import re
 import random
 
 
-
+## build in further if statements to parse when nouns can be included for further context,
+## (perhaps odds have noun add in)
 def cyclic(reps):
     global finsentencev1
     global respverb1
+    wittyretort = [ [" Are you crazy!? You should " , " that!" ] ,
+     [" That’s a terrible idea… We both know what happened the last time someone tried to " , " one of those. " ] ,
+     [" What kind of freak are you, trying to " , " it. "] ,
+     [" Never say something that stupid again. " ] ,
+     [" You should get your head checked. " ] ]
+
     if reps == 0:
         myfile = open("verblist.txt", encoding="utf8")
         lines = myfile.readlines()
@@ -44,7 +51,7 @@ def cyclic(reps):
         lines = myfile.readlines()
 
         finsentence = ""
-        finsentence += "I "
+        finsentence += " You're right I should "
 
         finsentencev1 = respverb1
         finsentence += finsentencev1
@@ -53,23 +60,25 @@ def cyclic(reps):
         finsentence += " it"
         if("\n" in finsentence):
             finsentence = finsentence.replace("\n", "")
-
-        respsentence = ""
-        respsentence += "Why "
-        respsentence += respverb1
-        respsentence += " it when you could "
+            retortselector = random.randint(0, len(wittyretort) -1)
+            if (retortselector < 3):
+                respsentence = ""
+                respsentence += wittyretort[retortselector][0]
+                respsentence += respverb1
+                respsentence += wittyretort[retortselector][1]
+            else:
+                respsentence = wittyretort[retortselector]
 
         respverb1 = finsentencev1
         respsentence += respverb1
-        respsentence += " it? "
+        ##respsentence += " it? "
         if("\n" in respsentence):
-            respsentence = respsentence.replace("\n", "")
+            if (isinstance(respsentence, str)):
+                respsentence = respsentence.replace("\n", "")
         myfile.close()
 
         print(finsentence)
         print(respsentence)
-
-
 
 def main():
     creps = 0

@@ -12,7 +12,7 @@ import random
 def cyclic(reps):
     global finsentencev1
     global respverb1
-    wittyretort = [ [" Are you crazy!? You should " , " that!" ] ,
+    wittyretort = [ [" Are you crazy!? You shouldn't " , " that!" ] ,
      [" That’s a terrible idea… We both know what happened the last time someone tried to " , " one of those. " ] ,
      [" What kind of freak are you, trying to " , " it. "] ,
      [" Never say something that stupid again. " ] ,
@@ -55,8 +55,9 @@ def cyclic(reps):
 
         finsentencev1 = respverb1
         finsentence += finsentencev1
-        respverb1 = finsentencev1
-        finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+        respverb1 = lines[random.randint(0, len(lines) - 1)]
+        #respverb1 = finsentencev1
+        #finsentencev1 = lines[random.randint(0, len(lines) - 1)]
         finsentence += " it"
         if("\n" in finsentence):
             finsentence = finsentence.replace("\n", "")
@@ -64,13 +65,16 @@ def cyclic(reps):
             if (retortselector < 3):
                 respsentence = ""
                 respsentence += wittyretort[retortselector][0]
-                respsentence += respverb1
+                respsentence += finsentencev1
                 respsentence += wittyretort[retortselector][1]
+                finsentencev1 = lines[random.randint(0, len(lines) - 1)]
+                respverb1 = lines[random.randint(0, len(lines) - 1)]
             else:
-                respsentence = wittyretort[retortselector]
+                respsentence = wittyretort[retortselector][0]
+                respverb1 = lines[random.randint(0, len(lines) - 1)]
 
-        respverb1 = finsentencev1
-        respsentence += respverb1
+
+        ##respsentence += respverb1
         ##respsentence += " it? "
         if("\n" in respsentence):
             if (isinstance(respsentence, str)):

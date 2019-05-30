@@ -16,7 +16,7 @@ def cyclic(reps):
         lines = myfile.readlines()
 
         finsentence = ""
-        finsentence += "I "
+        finsentence += "You're right I should "
 
         finsentencev1 = lines[random.randint(0, len(lines) - 1)]
         finsentence += finsentencev1

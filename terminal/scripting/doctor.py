@@ -34,7 +34,7 @@ def nextline(prompt, state):
         #^ this is just making the performer say a line with the prompt.
         #print(jokeline)
         if wn.synsets(prompt):
-            jokeline = "How the hell do you ingest a " + wn.synsets(prompt)[0].definition()
+            jokeline = "How the hell do you ingest " + wn.synsets(prompt)[0].definition()
             state = 2
             #^This is replacing the prompt with its definition
             print(jokeline)

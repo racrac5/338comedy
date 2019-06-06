@@ -13,6 +13,7 @@ searchword1 = "dancer" ## this will need to be linked to the front end
 
 
 def nextline(prompt): 
+    #go back and forth between canned responses of A,B form
     corpus = []
     relevance = 0
     max_amount = 0
@@ -98,7 +99,7 @@ def nextline(prompt):
 def newchoice(lastline): 
     #new choice takes a line and spits out the same line with the last verb changed. 
 
-
+    casenum = 0
     lastverb = ""
     verbs = []
     finsentence = ""
@@ -109,8 +110,17 @@ def newchoice(lastline):
     for word,pos in nltk.pos_tag(search):
         if (pos[0] == 'V'):
             verbs.append(word)
+                if(pos == "VBD"):
+                    casenum = 1
+                if(pos == "VBG"):
+                    casenum = 2
+                if(pos == "VBZ"):
+                    casenum = 3
+
+
 
     verbs = verbs[::-1]
+
 
     #reverse the array of verbs, now you have the last verb as the first element of the array
 
@@ -121,9 +131,17 @@ def newchoice(lastline):
     myfile = open("verblist.txt", encoding="utf8")
     lines = myfile.readlines()
     finsentence += lines[random.randint(0, len(lines) - 1)]
+
     if("\n" in finsentence):
         finsentence = finsentence.replace("\n", "")
+    if(casenum == "1"):
+        firstsentence += "ed"
+    if(casenum == "2"):
+        firstsentence += "ing"
+    if(casenum == "3"):
+        firstsentence += "s"
 
+        
     if(len(verbs) > 0):
         #if there are verbs in the sentence:
         if verbs[0] in lastline:

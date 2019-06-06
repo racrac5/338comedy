@@ -21,7 +21,7 @@ def cyclic(reps, next):
     global respverb1
     wittyretort = [ [" Nope, after that a " , " came and blocked the road in front of my car!" ] ,
      [" Well its embarrasing but I ran over a " , " in the parking lot. " ] ,
-     [" I stop to post a picture of a " , " on my instagram. "] ,
+     [" I stopped to post a picture of a " , " on my instagram. "] ,
      [" That's none of your goddamn business! Stop being so nosy! " ] ]
 
     if reps == 0:
@@ -51,6 +51,10 @@ def cyclic(reps, next):
 
         print(finsentence)
         print(respsentence)
+        return 1
+    elif(reps > 5):
+        print(wittyretort[3][0])
+        return 0 
 
     else:
         myfile = open("verblist.txt", encoding="utf8")
@@ -89,6 +93,8 @@ def cyclic(reps, next):
 
         print(finsentence)
         print(respsentence)
+        return 1
+
 
 def looper():
     creps = 0
@@ -146,7 +152,11 @@ def looper():
         if(next.lower() == "x"):
             break
         else:
-            cyclic(creps, next)
+            check = cyclic(creps, next)
+            if(check == 0):
+                break
             creps += 1
+
+
 
 main()

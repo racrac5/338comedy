@@ -16,7 +16,7 @@ from nltk.corpus import wordnet as wn
 #I'll replace what was in the fridge either with a holonym (i.e. face->eyes) or a hypernym (i.e. red -> color)
 
 
-def nextline(prompt, state): 
+def nextline(prompt, state):
     #go back and forth between canned responses of A,B form
     if(state == "A"):
         jokeline = "I can't believe it, yesterday I opened my fridge and there was a "
@@ -45,8 +45,8 @@ def nextline(prompt, state):
 def main():
 
 
-    while True: 
-        name = input("What is your prompt? \n>")
+    while True:
+        name = input("Wait what did you find? \n>")
         inputWord = word_tokenize(name)
         if(inputWord[0] == "end"):
             #a way to end the whole shebang
@@ -58,10 +58,3 @@ def main():
 
 
 main()
-
-
-
-
-
-
-

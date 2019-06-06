@@ -149,7 +149,7 @@ def looper():
     myfile.close()
 
     while True:
-        query = ["Riveting. Is that the only reason? What else happened? \n>" , "... And? Is that all? What else did you run into? \n>" , "Seems like a lame excuse, is that it? \n>"]
+        query = ["Riveting. Is that the only reason? What else happened? \n>" , "... And? Is that all? What else did you run into? \n>" , "Seems like a lame excuse, what else did you see? \n>"]
         question = query[random.randint(0,2)]
         next = input(question)
         #next = input("Riveting. Is that the only reason? What else happened? \n>")

@@ -25,6 +25,8 @@ from nltk.corpus import wordnet as wn
 def nextline(prompt, state):
     antonyms = []
     synonyms = []
+    drf = []
+    pert = []
     if(state == "A"):
         #jokeline = "That sounds like a "
         #jokeline = jokeline + prompt
@@ -45,7 +47,18 @@ def nextline(prompt, state):
                 synonyms.append(l.name())
                 if l.antonyms():
                     antonyms.append(l.antonyms()[0].name())
-        antonym = antonyms[0]     #[0].antonyms() #word.lemmas()[0].antonyms()[0]
+                if l.pertainyms():
+                    pert.append(l.pertainyms()[0].name())
+                if l.derivationally_related_forms():
+                    drf.append(l.derivationally_related_forms()[0].name())
+        if antonyms:
+            antonym = antonyms[0]     #[0].antonyms() #word.lemmas()[0].antonyms()[0]
+        elif pert:
+            antonym = pert[0]
+        #elif drf:
+        #    antonym = drf[0]
+        else:
+            antonym = "cyanide"
         print("You're gonna have to take one dose of " + antonym)
         print("\n>")
         print("Doc that seems stupid \n>")

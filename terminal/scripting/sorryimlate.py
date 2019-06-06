@@ -50,11 +50,11 @@ def cyclic(reps, next):
         myfile.close()
 
         print(finsentence)
-        print(respsentence)
+        #print(respsentence)
         return 1
     elif(reps > 5):
         print(wittyretort[3][0])
-        return 0 
+        return 0
 
     else:
         myfile = open("verblist.txt", encoding="utf8")
@@ -75,7 +75,8 @@ def cyclic(reps, next):
             if (retortselector < 3):
                 respsentence = ""
                 respsentence += wittyretort[retortselector][0]
-                respsentence += finsentencev1
+                #respsentence += finsentencev1
+                respsentence += next
                 respsentence += wittyretort[retortselector][1]
                 finsentencev1 = lines[random.randint(0, len(lines) - 1)]
                 respverb1 = lines[random.randint(0, len(lines) - 1)]
@@ -91,7 +92,7 @@ def cyclic(reps, next):
                 respsentence = respsentence.replace("\n", "")
         myfile.close()
 
-        print(finsentence)
+        #print(finsentence)
         print(respsentence)
         return 1
 
@@ -143,12 +144,15 @@ def looper():
         finsentence = finsentence.replace("\n", "")
 
 
-    print(line1)
-    print(finsentence)
+    #print(line1)
+    #print(finsentence)
     myfile.close()
 
     while True:
-        next = input("Riveting. Is that the only reason? \n>")
+        query = ["Riveting. Is that the only reason? What else happened? \n>" , "... And? Is that all? What else did you run into? \n>" , "Seems like a lame excuse, is that it? \n>"]
+        question = query[random.randint(0,2)]
+        next = input(question)
+        #next = input("Riveting. Is that the only reason? What else happened? \n>")
         if(next.lower() == "x"):
             break
         else:

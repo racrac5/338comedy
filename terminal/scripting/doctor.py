@@ -33,32 +33,44 @@ def nextline(prompt, state):
         state = 1
         #^ this is just making the performer say a line with the prompt.
         #print(jokeline)
-        jokeline = "How the hell do you ingest a " + wn.synsets(prompt)[0].definition()
-        state = 2
-        #^This is replacing the prompt with its definition
-        print(jokeline)
-        print("\n>")
-        jokeline = "You've never had to sit through dinner with my inlaws!"
-        print(jokeline)
-        print("You're not gonna like it, but I do have a treatment for you. \n>")
-        word = wn.synsets(prompt)[0]
-        for syn in wn.synsets(prompt):
-            for l in syn.lemmas():
-                synonyms.append(l.name())
-                if l.antonyms():
-                    antonyms.append(l.antonyms()[0].name())
-                if l.pertainyms():
-                    pert.append(l.pertainyms()[0].name())
-                if l.derivationally_related_forms():
-                    drf.append(l.derivationally_related_forms()[0].name())
-        if antonyms:
-            antonym = antonyms[0]     #[0].antonyms() #word.lemmas()[0].antonyms()[0]
-        elif pert:
-            antonym = pert[0]
+        if wn.synsets(prompt):
+            jokeline = "How the hell do you ingest a " + wn.synsets(prompt)[0].definition()
+            state = 2
+            #^This is replacing the prompt with its definition
+            print(jokeline)
+            print("\n>")
+            jokeline = "You've never had to sit through dinner with my inlaws!"
+            print(jokeline)
+            print("You're not gonna like it, but I do have a treatment for you. \n>")
+            word = wn.synsets(prompt)[0]
+            for syn in wn.synsets(prompt):
+                for l in syn.lemmas():
+                    synonyms.append(l.name())
+                    if l.antonyms():
+                        antonyms.append(l.antonyms()[0].name())
+                    if l.pertainyms():
+                        pert.append(l.pertainyms()[0].name())
+                    if l.derivationally_related_forms():
+                        drf.append(l.derivationally_related_forms()[0].name())
+            if antonyms:
+                antonym = antonyms[0]     #[0].antonyms() #word.lemmas()[0].antonyms()[0]
+            elif pert:
+                antonym = pert[0]
+            else:
+                next = prompt + ".n.01"
+                #put the prompt into the right format for wordnet
+                next = wn.synset(next)
+                if(len(next.member_holonyms()) > 0):
+                    antonym = next.member_holonyms()[0].name().split(".")[0]
+                #if there's a holonym, make prompt that
+                else:
+                    antonym = next.hypernyms()[0].name().split(".")[0]
+        else:
+            antonym = "arsenic"
         #elif drf:
         #    antonym = drf[0]
-        else:
-            antonym = "cyanide"
+        #else:
+        #    antonym = "cyanide"
         print("You're gonna have to take one dose of " + antonym)
         print("\n>")
         print("Doc that seems stupid \n>")
